@@ -54,6 +54,7 @@ export default {
     getCharacters() {
       this.isLoading = true;
       this.error = null;
+
       fetch("https://rickandmortyapi.com/api/character")
         .then((response) => {
           if (response.ok) {
@@ -63,7 +64,6 @@ export default {
         .then((data) => {
           this.isLoading = false;
           this.characters = data.results;
-          console.log("this.characters", this.characters);
         })
         .catch((error) => {
           console.error(error);

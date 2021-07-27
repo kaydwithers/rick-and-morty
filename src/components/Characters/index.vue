@@ -14,6 +14,7 @@
 import Character from "./Character.vue";
 
 export default {
+  name: "Characters",
   components: {
     Character,
   },
