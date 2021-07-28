@@ -1,7 +1,10 @@
 <template>
   <Modal />
 
-  <Header />
+  <Header
+    v-model="searchText"
+    @update:modelValue="getCharacters(`?name=${searchText}`)"
+  />
 
   <main>
     <div v-if="isLoading">
@@ -9,7 +12,7 @@
     </div>
 
     <div v-else-if="!isLoading && error">
-      <p>{{ error }}</p>
+      <p>Something went wrong. Please try again.</p>
     </div>
 
     <div v-else-if="!isLoading && (!characters || characters.length === 0)">
@@ -43,19 +46,25 @@ export default {
       characters: [],
       error: null,
       isLoading: false,
+      searchText: null,
     };
   },
   methods: {
     /**
      * Get the API response.
      *
+     * @param {String} param - The API url param.
      * @return {Promise}
      */
-    getCharacters() {
+    getCharacters(param = null) {
+      const url = `https://rickandmortyapi.com/api/character/${
+        param ? param : ""
+      }`;
+
       this.isLoading = true;
       this.error = null;
 
-      fetch("https://rickandmortyapi.com/api/character")
+      fetch(url)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -64,11 +73,12 @@ export default {
         .then((data) => {
           this.isLoading = false;
           this.characters = data.results;
+          console.log("data.results: ", data.results);
         })
         .catch((error) => {
-          console.error(error);
+          console.error(`Failed getCharacters(): ${error}`);
           this.isLoading = false;
-          this.error = `Failed getCharacters: ${error}`;
+          this.error = error;
         });
     },
   },
