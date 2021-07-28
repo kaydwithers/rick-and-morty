@@ -63,8 +63,6 @@ export default {
     getCharacter(characterId) {
       const url = `https://rickandmortyapi.com/api/character/${characterId}`;
 
-      console.log("url", url);
-
       this.isLoading = true;
       this.error = null;
 

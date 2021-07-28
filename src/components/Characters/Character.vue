@@ -22,8 +22,10 @@ export default {
     },
   },
   methods: {
+    /**
+     * Handle the click of a character selection.
+     */
     handleCharacterSelect() {
-      console.log("handleCharacterSelect");
       this.$emit("character-select", this.character.id);
     },
   },
