@@ -31,7 +31,12 @@
     </div>
   </main>
 
-  <Footer />
+  <Footer
+    :nextPage="nextPage"
+    :previousPage="previousPage"
+    @next-page="handleNextPage"
+    @previous-page="handlePreviousPage"
+  />
 </template>
 
 <script>
@@ -54,9 +59,12 @@ export default {
     return {
       characterId: null,
       characters: [],
+      currentPage: 1,
       error: null,
       isLoading: false,
       isModalOpen: false,
+      nextPage: null,
+      previousPage: null,
       searchText: null,
     };
   },
@@ -84,7 +92,6 @@ export default {
         .then((data) => {
           this.isLoading = false;
           this.characters = data.results;
-          console.log("data.results: ", data.results);
         })
         .catch((error) => {
           console.error(`Failed getCharacters(): ${error}`);
@@ -103,6 +110,23 @@ export default {
       this.isModalOpen = true;
     },
 
+    /**
+     * Handle the click of the next page button.
+     */
+    handleNextPage() {
+      this.currentPage++;
+      this.getCharacters(`?page=${this.currentPage}`);
+    },
+
+    /**
+     * Handle the click of the previous page button.
+     */
+    handlePreviousPage() {
+      if (this.currentPage >= 1) {
+        this.currentPage--;
+        this.getCharacters(`?page=${this.currentPage}`);
+      }
+    },
   },
   mounted() {
     this.getCharacters();

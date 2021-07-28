@@ -77,7 +77,6 @@ export default {
         .then((data) => {
           this.isLoading = false;
           this.character = data;
-          console.log("this.character: ", this.character);
         })
         .catch((error) => {
           console.error(`Failed getCharacter(): ${error}`);

@@ -1,16 +1,28 @@
 <template>
   <footer>
-    <h1>Footer</h1>
+    <button @click="$emit('previous-page')">⬅</button>
+    <button @click="$emit('next-page')">➡</button>
   </footer>
 </template>
 
 <script>
-export default { name: "Footer" };
+export default {
+  name: "Footer",
+};
 </script>
 
 <style scoped>
 footer {
   background-color: rgb(158, 158, 158);
-  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+button {
+  cursor: pointer;
+  font-size: 4rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 </style>
