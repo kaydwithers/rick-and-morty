@@ -1,5 +1,9 @@
 <template>
-  <Modal />
+  <Modal
+    v-if="isModalOpen"
+    :character-id="characterId"
+    @close-modal="isModalOpen = false"
+  />
 
   <Header
     v-model="searchText"
@@ -8,7 +12,7 @@
 
   <main>
     <div v-if="isLoading">
-      <p>Loading...</p>
+      <Loading />
     </div>
 
     <div v-else-if="!isLoading && error">
@@ -20,7 +24,10 @@
     </div>
 
     <div v-else>
-      <Characters :characters="characters" />
+      <Characters
+        :characters="characters"
+        @character-select="handleCharacterSelect"
+      />
     </div>
   </main>
 
@@ -31,6 +38,7 @@
 import Characters from "./components/Characters/index.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
+import Loading from "./components/Loading.vue";
 import Modal from "./components/Modal.vue";
 
 export default {
@@ -39,13 +47,16 @@ export default {
     Characters,
     Footer,
     Header,
+    Loading,
     Modal,
   },
   data() {
     return {
+      characterId: null,
       characters: [],
       error: null,
       isLoading: false,
+      isModalOpen: false,
       searchText: null,
     };
   },
@@ -81,6 +92,17 @@ export default {
           this.error = error;
         });
     },
+
+    /**
+     * Handle the click of a character selection.
+     *
+     * @param {String} id - The ID of the character.
+     */
+    handleCharacterSelect(id) {
+      this.characterId = id;
+      this.isModalOpen = true;
+    },
+
   },
   mounted() {
     this.getCharacters();
@@ -90,7 +112,38 @@ export default {
 
 <style>
 body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+  border-style: none;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+p {
+  font-size: 1rem;
 }
 </style>
