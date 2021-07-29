@@ -94,11 +94,6 @@ export default {
     handleClose() {
       this.$emit("close-modal");
     },
-
-    /**
-     * Handle the click of the dropdown button.
-     */
-    handleDropdown() {},
   },
   mounted() {
     this.getCharacter(this.characterId);
