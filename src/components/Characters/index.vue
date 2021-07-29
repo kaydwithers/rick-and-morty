@@ -46,7 +46,7 @@ export default {
 <style scoped>
 .characters {
   background-color: var(--background-color-secondary);
-  padding: 2rem;
+  padding: 4rem 2rem;
 }
 
 h1 {
