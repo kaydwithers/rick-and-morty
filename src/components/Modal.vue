@@ -7,13 +7,13 @@
 
       <Loading v-if="isLoading" />
 
-      <div v-else-if="!isLoading && error">
-        <p>Something went wrong. Please try again.</p>
-      </div>
+      <p v-else-if="!isLoading && error" class="error">
+        Something went wrong. Please try again.
+      </p>
 
-      <div v-else-if="!isLoading && !character">
-        <p>No character found.</p>
-      </div>
+      <p v-else-if="!isLoading && !character" class="error">
+        No matching character found.
+      </p>
 
       <div v-else>
         <img :alt="character.name" :src="character.image" />
@@ -109,6 +109,11 @@ export default {
 </script>
 
 <style scoped>
+.error {
+  margin: 4rem 2rem;
+  text-align: center;
+}
+
 .modal {
   position: fixed;
   display: flex;

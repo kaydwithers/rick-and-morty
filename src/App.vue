@@ -13,13 +13,16 @@
   <main>
     <Loading v-if="isLoading" />
 
-    <div v-else-if="!isLoading && error">
-      <p>Something went wrong. Please try again.</p>
-    </div>
+    <p v-else-if="!isLoading && error" class="error">
+      Something went wrong. Please try again.
+    </p>
 
-    <div v-else-if="!isLoading && (!characters || characters.length === 0)">
-      <p>No characters found.</p>
-    </div>
+    <p
+      v-else-if="!isLoading && (!characters || characters.length === 0)"
+      class="error"
+    >
+      No characters found.
+    </p>
 
     <Characters
       v-else
@@ -28,10 +31,7 @@
     />
   </main>
 
-  <Footer
-    @next-page="handleNextPage"
-    @previous-page="handlePreviousPage"
-  />
+  <Footer @next-page="handleNextPage" @previous-page="handlePreviousPage" />
 </template>
 
 <script>
@@ -132,5 +132,10 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.error {
+  margin: 4rem 2rem;
+  text-align: center;
 }
 </style>
