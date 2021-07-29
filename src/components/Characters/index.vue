@@ -23,7 +23,12 @@ export default {
   components: {
     Character,
   },
-  props: ["characters"],
+  props: {
+    characters: {
+      type: Object,
+      required: false,
+    },
+  },
   methods: {
     /**
      * Returns a random character name.
@@ -40,7 +45,7 @@ export default {
 
 <style scoped>
 .characters {
-  background-color: rgb(36, 40, 47);
+  background-color: var(--background-color-secondary);
   padding: 2rem;
 }
 
@@ -55,7 +60,7 @@ ul {
   grid-gap: 2rem;
   gap: 2rem;
   grid-auto-flow: row;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 @media (min-width: 768px) {
@@ -65,6 +70,12 @@ ul {
 }
 
 @media (min-width: 1024px) {
+  ul {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
   ul {
     grid-template-columns: repeat(7, 1fr);
   }

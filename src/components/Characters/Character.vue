@@ -10,7 +10,12 @@
 <script>
 export default {
   name: "Character",
-  props: ["character"],
+  props: {
+    character: {
+      type: Object,
+      required: false,
+    },
+  },
   emits: {
     "character-select": (id) => {
       if (id) {
@@ -34,9 +39,13 @@ export default {
 
 <style scoped>
 button {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  cursor: pointer;
+  align-items: center;
+  background-color: var(--background-color-primary);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
   height: 100%;
   overflow: hidden;
   transition-duration: 300ms;
@@ -49,6 +58,7 @@ button:hover {
 }
 
 img {
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   width: 100%;
 }

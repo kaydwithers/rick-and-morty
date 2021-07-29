@@ -18,8 +18,8 @@ export default {
 
 <style scoped>
 button {
-  background-color: papayawhip;
-  cursor: pointer;
+  background-color: var(--background-color-accent);
+  color: #000;
   font-size: 1.5rem;
   padding: 1rem 2rem;
 }

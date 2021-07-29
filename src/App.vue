@@ -11,9 +11,7 @@
   />
 
   <main>
-    <div v-if="isLoading">
-      <Loading />
-    </div>
+    <Loading v-if="isLoading" />
 
     <div v-else-if="!isLoading && error">
       <p>Something went wrong. Please try again.</p>
@@ -23,12 +21,11 @@
       <p>No characters found.</p>
     </div>
 
-    <div v-else>
-      <Characters
-        :characters="characters"
-        @character-select="handleCharacterSelect"
-      />
-    </div>
+    <Characters
+      v-else
+      :characters="characters"
+      @character-select="handleCharacterSelect"
+    />
   </main>
 
   <Footer
@@ -133,39 +130,11 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+@import "./css/main.css";
 
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-}
-
-button {
-  background-color: transparent;
-  background-image: none;
-  border-style: none;
-  padding: 0;
-}
-
-ol,
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 3rem;
-  margin-bottom: 3rem;
-}
-
-p {
-  font-size: 1rem;
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -13,14 +13,13 @@ export default {
 
 <style scoped>
 footer {
-  background-color: rgb(158, 158, 158);
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  margin-top: auto;
+  padding: 3rem;
 }
 
 button {
-  cursor: pointer;
   font-size: 4rem;
   margin-left: 1rem;
   margin-right: 1rem;

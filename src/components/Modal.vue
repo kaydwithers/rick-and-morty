@@ -3,13 +3,9 @@
     <div class="modal__overlay" @click="handleClose" />
 
     <div class="modal__content">
-      <div>
-        <Button @click="handleClose">✖</Button>
-      </div>
+      <button class="close" @click="handleClose">✖</button>
 
-      <div v-if="isLoading">
-        <Loading />
-      </div>
+      <Loading v-if="isLoading" />
 
       <div v-else-if="!isLoading && error">
         <p>Something went wrong. Please try again.</p>
@@ -22,6 +18,7 @@
       <div v-else>
         <img :alt="character.name" :src="character.image" />
         <h2>{{ character.name }}</h2>
+
         <p><strong>Species:</strong> {{ character.species }}</p>
         <p><strong>Location:</strong> {{ character.location.name }}</p>
         <p><strong>Status:</strong> {{ character.status }}</p>
@@ -123,27 +120,47 @@ export default {
 }
 
 .modal__content {
-  background-color: #fff;
+  background-color: var(--background-color-primary);
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
-  height: 50%;
   justify-content: center;
-  margin: 4rem;
-  padding: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  min-height: 50%;
+  padding: 2rem;
+  position: relative;
   text-align: center;
   width: 100%;
   z-index: 1;
 }
 
+.modal__content .close {
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .modal__content img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   margin-bottom: 2rem;
 }
 
-h2 {
+.modal__content h2 {
   margin-bottom: 1rem;
 }
 
-p {
+.modal__content p {
   margin-bottom: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .modal__content {
+    width: 40%;
+  }
 }
 </style>
