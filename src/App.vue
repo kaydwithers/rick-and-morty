@@ -29,8 +29,6 @@
   </main>
 
   <Footer
-    :nextPage="nextPage"
-    :previousPage="previousPage"
     @next-page="handleNextPage"
     @previous-page="handlePreviousPage"
   />
@@ -62,8 +60,6 @@ export default {
       error: null,
       isLoading: false,
       isModalOpen: false,
-      nextPage: null,
-      previousPage: null,
       searchText: null,
     };
   },

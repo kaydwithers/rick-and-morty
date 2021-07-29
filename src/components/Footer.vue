@@ -8,6 +8,7 @@
 <script>
 export default {
   name: "Footer",
+  emits: ["previous-page", "next-page"],
 };
 </script>
 
