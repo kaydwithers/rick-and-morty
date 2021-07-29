@@ -28,9 +28,7 @@
           <p><strong>Status:</strong> {{ character.status }}</p>
         </div>
 
-        <Button @click="handleDropdown">Episodes</Button>
-
-        <p>Episodes: {{ character.episode.length }}</p>
+        <Episodes />
       </div>
     </div>
   </div>
@@ -39,7 +37,7 @@
 <script>
 import { API_URL } from "../js/const";
 
-import Button from "./Button.vue";
+import Episodes from "./Episodes.vue";
 import Loading from "./Loading.vue";
 
 export default {
@@ -58,7 +56,7 @@ export default {
     };
   },
   components: {
-    Button,
+    Episodes,
     Loading,
   },
   emits: ["close-modal"],
