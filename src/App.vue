@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { API_URL } from "./js/const";
+
 import Characters from "./components/Characters/index.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
@@ -75,15 +77,11 @@ export default {
      * @param {String} param - The API url param.
      * @return {Promise}
      */
-    getCharacters(param = null) {
-      const url = `https://rickandmortyapi.com/api/character/${
-        param ? param : ""
-      }`;
-
+    getCharacters(param = "") {
       this.isLoading = true;
       this.error = null;
 
-      fetch(url)
+      fetch(API_URL + param)
         .then((response) => {
           if (response.ok) {
             return response.json();

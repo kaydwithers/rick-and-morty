@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import { API_URL } from "../js/const";
+
 import Button from "./Button.vue";
 import Loading from "./Loading.vue";
 
@@ -61,12 +63,10 @@ export default {
      * @return {Promise}
      */
     getCharacter(characterId) {
-      const url = `https://rickandmortyapi.com/api/character/${characterId}`;
-
       this.isLoading = true;
       this.error = null;
 
-      fetch(url)
+      fetch(API_URL + characterId)
         .then((response) => {
           if (response.ok) {
             return response.json();
