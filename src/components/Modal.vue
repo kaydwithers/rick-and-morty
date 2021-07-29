@@ -28,7 +28,7 @@
           <p><strong>Status:</strong> {{ character.status }}</p>
         </div>
 
-        <Episodes />
+        <Episodes :character="character" />
       </div>
     </div>
   </div>

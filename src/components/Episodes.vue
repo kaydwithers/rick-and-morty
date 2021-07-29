@@ -4,7 +4,7 @@
   </Button>
 
   <transition name="fade">
-    <div v-show="isExpanded">
+    <div class="episodes" v-show="isExpanded">
       <p>Episodes: {{ character.episode.length }}</p>
     </div>
   </transition>
@@ -18,6 +18,12 @@ export default {
   components: {
     Button,
   },
+  props: {
+    character: {
+      type: Object,
+      required: false,
+    },
+  },
   data() {
     return {
       isExpanded: false,
@@ -25,7 +31,7 @@ export default {
   },
   methods: {
     /**
-     * Handle the click of the dropdown button.
+     * Handle the click of the accordion button.
      */
     handleAccordion() {
       this.isExpanded = !this.isExpanded;
@@ -35,6 +41,10 @@ export default {
 </script>
 
 <style scoped>
+button {
+  margin-bottom: 2rem;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
