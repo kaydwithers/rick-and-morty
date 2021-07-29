@@ -37,11 +37,10 @@ export default {
      */
     handleTheme(theme = null) {
       this.hasTheme = !this.hasTheme;
-      if (theme) {
-        document.body.className = theme;
-      } else {
-        document.body.className = "";
-      }
+
+      theme
+        ? (document.body.className = theme)
+        : (document.body.className = "");
     },
   },
 };
