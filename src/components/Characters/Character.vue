@@ -42,8 +42,7 @@ button {
   align-items: center;
   background-color: var(--background-color-primary);
   border-radius: var(--border-radius);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -54,7 +53,7 @@ button {
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: scaleX(1.05) scaleY(1.05);
 }
 
 img {
@@ -64,7 +63,9 @@ img {
 }
 
 p {
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 1rem 0.5rem;
 }
 </style>

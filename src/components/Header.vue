@@ -10,7 +10,7 @@
     />
 
     <button v-if="hasTheme" @click="handleTheme()">🌞</button>
-    <button v-else @click="handleTheme('dark')">🌙</button>
+    <button v-else @click="handleTheme('dark')">🌚</button>
   </header>
 </template>
 

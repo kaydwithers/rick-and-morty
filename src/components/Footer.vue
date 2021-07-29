@@ -17,12 +17,12 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: auto;
-  padding: 3rem;
+  padding: 4rem 1rem;
 }
 
 button {
   font-size: 4rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 </style>

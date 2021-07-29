@@ -50,6 +50,7 @@ export default {
 }
 
 h1 {
+  margin-bottom: 4rem;
   padding-left: 2rem;
   padding-right: 2rem;
   text-align: center;
@@ -65,7 +66,7 @@ ul {
 
 @media (min-width: 768px) {
   ul {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -76,6 +77,10 @@ ul {
 }
 
 @media (min-width: 1280px) {
+  .characters {
+    padding: 4rem;
+  }
+
   ul {
     grid-template-columns: repeat(7, 1fr);
   }

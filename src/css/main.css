@@ -3,12 +3,14 @@
   --background-color-secondary: #000;
   --background-color-accent: #0084ff;
   --border-radius: 0.5rem;
+  --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --color: #000;
 }
 
 .dark {
-  --background-color-primary: #000;
-  --background-color-secondary: #444;
+  --background-color-primary: #181818;
+  --background-color-secondary: #000;
   --background-color-accent: #ff4f00;
   --color: #fff;
 }
@@ -37,12 +39,10 @@ ul {
 
 h1 {
   font-size: 4rem;
-  margin-bottom: 4rem;
 }
 
 h2 {
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: 2.5rem;
 }
 
 p {

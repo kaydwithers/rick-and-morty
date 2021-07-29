@@ -17,11 +17,16 @@
 
       <div v-else>
         <img :alt="character.name" :src="character.image" />
-        <h2>{{ character.name }}</h2>
 
-        <p><strong>Species:</strong> {{ character.species }}</p>
-        <p><strong>Location:</strong> {{ character.location.name }}</p>
-        <p><strong>Status:</strong> {{ character.status }}</p>
+        <div class="heading">
+          <h2>{{ character.name }}</h2>
+        </div>
+
+        <div class="paragraph">
+          <p><strong>Species:</strong> {{ character.species }}</p>
+          <p><strong>Location:</strong> {{ character.location.name }}</p>
+          <p><strong>Status:</strong> {{ character.status }}</p>
+        </div>
 
         <Button @click="handleDropdown">Episodes</Button>
 
@@ -39,7 +44,12 @@ import Loading from "./Loading.vue";
 
 export default {
   name: "Modal",
-  props: ["characterId"],
+  props: {
+    characterId: {
+      type: Number,
+      required: false,
+    },
+  },
   data() {
     return {
       character: null,
@@ -108,11 +118,12 @@ export default {
   left: 0;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .modal__overlay {
   position: absolute;
-  background-color: #1a202c;
+  background-color: #000;
   height: 100%;
   left: 0;
   opacity: 0.5;
@@ -122,13 +133,12 @@ export default {
 .modal__content {
   background-color: var(--background-color-primary);
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 2rem;
-  margin-right: 2rem;
   min-height: 50%;
-  padding: 2rem;
+  padding: 4rem 2rem;
   position: relative;
   text-align: center;
   width: 100%;
@@ -138,7 +148,7 @@ export default {
 .modal__content .close {
   cursor: pointer;
   font-size: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -147,20 +157,39 @@ export default {
 .modal__content img {
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.modal__content h2 {
+.modal__content .heading {
   margin-bottom: 1rem;
+}
+
+.modal__content .paragraph {
+  margin-bottom: 2rem;
 }
 
 .modal__content p {
   margin-bottom: 0.5rem;
 }
 
+.modal__content button {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .modal__content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .modal__content {
-    width: 40%;
+    width: 35%;
+  }
+
+  .modal__content .close {
+    padding: 2rem;
   }
 }
 </style>
